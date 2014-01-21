@@ -1,5 +1,7 @@
 #!/bin/bash
 # configure eth0 to be loaded at boot
+# http://blog.vandenbrand.org/2012/02/21/creating-a-centos-6-2-base-box-for-vagrant/
+
 sed -i 's/.*ONBOOT.*/ONBOOT=yes/'  /etc/sysconfig/network-scripts/ifcfg-eth0
 
 # reconfigure the hostname

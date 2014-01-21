@@ -5,7 +5,8 @@
 
 # to modify so that the os is autodetectd via /etc/os-release or /etc/redhat-release files
 OS="$1" # 'ubuntu' or 'centos'
-VAGRANT_HOSTNAME="vagrant-$OS"
+#VARIANT="$2"
+VAGRANT_HOSTNAME="vagrant-$OS" #-$VARIANT"
 VAGRANT_DOMAIN="vagrantup.com"
 ROOT_PWD="vagrant"
 MAIN_ACCOUNT="vagrant"
@@ -14,12 +15,17 @@ ADMIN_GROUP="admin"
 
 source "./setup_"$OS".sh"
 
+# set the domain name
+sed -i "/127.0.1.1/d" /etc/hosts #removes existing definitions
+echo "127.0.1.1 $VAGRANT_HOSTNAME.$VAGRANT_DOMAIN $VAGRANT_HOSTNAME" >> /etc/hosts
+
 # blacklist the modules not necessary for a vm
 MODULES_BLACKLIST_FILE="/etc/modprobe.d/blacklist-vagrant.conf"
 MODULES_BLACKLIST="usb i2c snd sound parport"
 read -a LIST_OF_MODULES <<< "$MODULES_BLACKLIST"
 for modulename in ${LIST_OF_MODULES[@]}
 do
+    # run lsmod, grab just the name of the modules that match the undesired, and create a blacklist out of them that will be loaded by modprobe at the next restart
     lsmod | cut -d " " -f1 | grep $modulename | sed 's/^/blacklist /g' >> $MODULES_BLACKLIST_FILE
 done
 

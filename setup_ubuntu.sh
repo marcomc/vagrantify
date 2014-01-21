@@ -3,7 +3,7 @@
 echo $VAGRANT_HOSTNAME > /etc/hostname
 # set the domain name
 sed -i "/127.0.1.1/d" /etc/hosts #removes existing definitions
-echo "127.0.1.1 $VAGRANT_HOSTNAME.VAGRANT_DOMAIN $VAGRANT_HOSTNAME" >> /etc/hosts
+echo "127.0.1.1 $VAGRANT_HOSTNAME.$VAGRANT_DOMAIN $VAGRANT_HOSTNAME" >> /etc/hosts
 
 # make sure that the system is updated at the latests release
 #

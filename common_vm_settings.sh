@@ -27,17 +27,21 @@ done
 # remove any UseDNS setting from the sshd_config file
 sed -i "/UseDNS/d" /etc/ssh/sshd_config
 # add the UseDNS=no setting to the sshd_config file
-echo 'UseDNS no' >> /etc/sudoers
+echo 'UseDNS no' >> /etc/ssh/sshd_config
 
 # set the root password
 echo root:$ROOT_PWD | chpasswd
 
 # Create admin group and allow it for sudo NOPASSWORD capability
 groupadd $ADMIN_GROUP -f
+
+# updates the SSH_AUTH_SOCK settings in sudoers
+sed -i '/SSH_AUTH_SOCK/d' /etc/sudoers
+echo 'Defaults env_keep="SSH_AUTH_SOCK"' >> /etc/sudoers
+
 # remove the current set up for the ADMIN group in the sudoers file
 sed -i "/$ADMIN_GROUP/d" /etc/sudoers
 # add a new set up for the ADMIN group in the sudoers file
-echo 'Defaults env_keep="SSH_AUTH_SOCK"' >> /etc/sudoers
 echo "%$ADMIN_GROUP   ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 # create the vagrant user

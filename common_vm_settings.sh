@@ -44,8 +44,8 @@ sed -i "/UseDNS/d" /etc/ssh/sshd_config
 echo 'UseDNS no' >> /etc/ssh/sshd_config
 
 # set the ssh server to listen on port 2222
-sed -i '/Port /d' /etc/ssh/sshd_config
-echo 'Port 2222' >> /etc/ssh/sshd_config
+#sed -i '/Port /d' /etc/ssh/sshd_config
+#echo 'Port 2222' >> /etc/ssh/sshd_config
 
 # set the root password
 echo root:$ROOT_PWD | chpasswd

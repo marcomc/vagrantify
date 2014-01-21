@@ -18,7 +18,7 @@ ADMIN_GROUP="admin"
 
 # this checks what kind of OS we want to vagrantify, allowing the definition of personalised names for the os 
 if echo $OS | grep centos - -q ;then
-    source "./setup_cenotos.sh"
+    source "./setup_centos.sh"
 elif echo $OS | grep ubuntu - -q ; then
     source "./setup_ubuntu.sh"
 fi

@@ -57,6 +57,10 @@ groupadd $ADMIN_GROUP -f
 sed -i '/SSH_AUTH_SOCK/d' /etc/sudoers
 echo 'Defaults env_keep="SSH_AUTH_SOCK"' >> /etc/sudoers
 
+# updates comment the requiretty setting in sudoers
+sed -i '/requiretty/s/^/# /g' /etc/sudoers
+#echo '#Defaults requiretty"' >> /etc/sudoers
+
 # remove the current set up for the ADMIN group in the sudoers file
 sed -i "/$ADMIN_GROUP/d" /etc/sudoers
 # add a new set up for the ADMIN group in the sudoers file

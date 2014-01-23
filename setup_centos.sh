@@ -11,15 +11,14 @@ ifup eth0
 # set the hostname
 sed -i "s/.*HOSTNAME.*/HOSTNAME=$VAGRANT_HOSTNAME/" /etc/sysconfig/network
 
-curl -o epel-release-6-8.noarch.rpm http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-rpm --quiet -ivh epel-release-6-8.noarch.rpm
+curl -o epel-release-6.rpm http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+rpm --quiet -ivh epel-release-6*.rpm
 
 # install desired packages
-yum -q -y install vim make gcc screen man openssh-server openssh-client
-yum -q -y autoconf kernel-devel-$(uname -r) 
+yum -y -q install vim make gcc screen man openssh-server openssh-client autoconf.noarch kernel-devel-$(uname -r) 
 
 # make sure that the system is updated at the latests release
-yum -qy upgrade
+yum -y -q upgrade
 
 # spring cleaning
 yum clean all -q

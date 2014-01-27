@@ -8,7 +8,7 @@ yum -y -q install http php
 chkconfig --levels 235 httpd on
 
 # start Apache now
-/etc/init.d/httpd restart
+/etc/init.d/httpd start
 
 #### install mod_pagespeed #####
 NEW_REPO="/etc/yum.repos.d/mod-pagespeed.repo"
@@ -25,6 +25,12 @@ EOF
 
 yum -y -q --enablerepo=mod-pagespeed install mod-pagespeed
 
+# Enables the 'collapse_whitespace' of Pagespeed
+sed -i 's/.*ModPagespeedEnableFilters collapse_whitespace.*/    ModPagespeedEnableFilters collapse_whitespace,elide_attributes/' /etc/httpd/conf.d/pagespeed.conf
+
+/etc/init.d/httpd restart
+
+# set up the PHP test page from which we will check that Apache is actualy loading the modules we require 
 DOCUMENT_ROOT=`grep DocumentRoot /etc/httpd/conf/httpd.conf | sed "/^#/d" | cut -d'"' -f2`
 PHP_INFO=$DOCUMENT_ROOT/phpinfo.php
 touch $PHP_INFO

@@ -60,3 +60,12 @@ else
     echo "X-Mod-Pagespeed not installed or not activated"
 fi
 ##########
+# verifies that X-Mod-Pagespeed is properly working
+if curl -# localhost 2> /dev/null |grep "  " 2>&1  > /dev/null 
+then
+    echo "X-Mod-Pagespeed is NOT working, double white spaces have been found"
+    curl -#curl localhost 2> /dev/null
+else
+    echo "X-Mod-Pagespeed is removing space properly"
+    curl -#curl localhost 2> /dev/null
+fi

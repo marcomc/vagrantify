@@ -3,7 +3,7 @@
 ##########
 
 # install the Apache server
-yum -y -q install http php
+yum -y -q install http php varnish
 # set the Apache server to start at login
 chkconfig --levels 235 httpd on
 

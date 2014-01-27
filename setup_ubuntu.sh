@@ -7,7 +7,7 @@ echo $VAGRANT_HOSTNAME > /etc/hostname
 apt-get -q update && sudo apt-get -q dist-upgrade
 
 # install desired packages
-apt-get -q install ssh vim screen make git-core
+apt-get -q install ssh vim screen make git-core gcc
 
 # spring cleaning
 apt-get -q clean

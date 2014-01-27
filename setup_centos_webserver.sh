@@ -6,9 +6,19 @@
 yum -y -q install http php varnish
 # set the Apache server to start at login
 chkconfig --levels 235 httpd on
-
+chkconfig --levels 235 varnish on
+chkconfig --levels 235 varnishlog on
 # start Apache now
 /etc/init.d/httpd start
+sleep 2
+
+/etc/init.d/varnish start
+/etc/init.d/varnishlog start
+# Varnish is listening on the local port 6081
+# Vagrant is configured to forward that port to port localhost:8081
+# it's possible to test the Varnish cash using curl and monitoring the /etc/log/varnish/varnish.log file
+# curl http://localhost:8081 # run this from the host machine
+
 
 #### install mod_pagespeed #####
 NEW_REPO="/etc/yum.repos.d/mod-pagespeed.repo"
@@ -29,6 +39,7 @@ yum -y -q --enablerepo=mod-pagespeed install mod-pagespeed
 sed -i 's/.*ModPagespeedEnableFilters collapse_whitespace.*/    ModPagespeedEnableFilters collapse_whitespace,elide_attributes/' /etc/httpd/conf.d/pagespeed.conf
 
 /etc/init.d/httpd restart
+/etc/init.d/varnish restart
 
 # set up the PHP test page from which we will check that Apache is actualy loading the modules we require 
 DOCUMENT_ROOT=`grep DocumentRoot /etc/httpd/conf/httpd.conf | sed "/^#/d" | cut -d'"' -f2`

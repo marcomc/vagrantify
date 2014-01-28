@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ##########
-
+CA_ROOT="/root/CA/"
 # install the Apache server
 yum -y -q install http php varnish
 # set the Apache server to start at login
@@ -69,3 +69,5 @@ else
     echo "X-Mod-Pagespeed is removing space properly"
     curl -#curl localhost 2> /dev/null
 fi
+
+

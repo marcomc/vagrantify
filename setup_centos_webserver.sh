@@ -1,5 +1,6 @@
 #!/bin/bash
 
+exec setup_ca_and_certificate.sh $HOSTNAME.local
 ##########
 # install the Apache server
 yum -y -q install http php varnish

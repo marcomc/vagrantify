@@ -2,6 +2,11 @@
 # configure eth0 to be loaded at boot
 # http://blog.vandenbrand.org/2012/02/21/creating-a-centos-6-2-base-box-for-vagrant/
 
+$ROOT_DEVICE=/dev/sda
+# Fixes unstable clocksource (which also generates tyoing delays in ssh connection)
+sed -i "s/kernel.*$/& clocksource_failover=acpi_PM/g" /boot/grub/grub.conf
+grub-install $ROOT_DEVICE
+
 # enable the ethernet card to be loaded at oot, apparently not the default beahviour
 sed -i 's/.*ONBOOT.*/ONBOOT=yes/'  /etc/sysconfig/network-scripts/ifcfg-eth0
 

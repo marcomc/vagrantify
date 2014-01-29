@@ -1,7 +1,6 @@
 #!/bin/bash
 
 ##########
-CA_ROOT="/root/CA/"
 # install the Apache server
 yum -y -q install http php varnish
 # set the Apache server to start at login

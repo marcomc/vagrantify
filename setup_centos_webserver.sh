@@ -40,6 +40,14 @@ echo "Enabling mod_pagespeed"
 # Enables the 'collapse_whitespace' of Pagespeed
 sed -i 's/.*ModPagespeedEnableFilters collapse_whitespace.*/    ModPagespeedEnableFilters collapse_whitespace,elide_attributes/' /etc/httpd/conf.d/pagespeed.conf
 
+
+echo "Setting $DOMAIN_NAME as ServerName in Apache and mod_ssl"
+# setup the ServerName for Apache
+sed -i "s/#ServerName.*/ServerName $DOMAIN_NAME:80/" /etc/httpd/conf/httpd.conf
+# setup the ServerName for mod_ssl
+sed -i "s/#ServerName.*/ServerName $DOMAIN_NAME:443/" /etc/httpd/conf.d/ssl.conf
+
+
 # start Apache now
 /etc/init.d/httpd restart
 /etc/init.d/varnish restart
@@ -76,6 +84,7 @@ cat <<'EOF' > $MULTISPACE_TEST
         <body>  <p>Paragraph with m  a  n  y       contiguous     spaces      !</p>        </body>
 </html>
 EOF
+
 echo "Original content of $MULTISPACE_TEST:"
 cat $MULTISPACE_TEST
 
@@ -86,9 +95,11 @@ then
 else
     curl -# http://localhost/multispace_test.html 2> /dev/null
     echo "X-Mod-Pagespeed is removing space properly"
+fi
 
 # IPTABLES Firewall setupt
 echo "Enabling IPTABLES to accept connection exclusively for SSH, HTTP, HTTPS and CacheProxy"
+
 cat <<'EOF' > $IPTABLE_SAVE_FILE
 *filter
 :INPUT ACCEPT [0:0]
@@ -105,6 +116,7 @@ cat <<'EOF' > $IPTABLE_SAVE_FILE
 -A FORWARD -j REJECT --reject-with icmp-host-prohibited
 COMMIT
 EOF
-/etc/init.d/iptables restart
 
+/etc/init.d/iptables restart
 echo "Webserver Configuration completed!"
+

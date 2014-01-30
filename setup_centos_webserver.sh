@@ -51,23 +51,31 @@ cat <<'EOF' > $PHP_INFO
 ?>
 EOF
 
+MULTISPACE_TEST=$DOCUMENT_ROOT/multispace_test.html
+touch $MULTISPACE_TEST
+cat <<'EOF' > $MULTISPACE_TEST
+<html>
+        <head>                <title>Title</title> </head>
+        <body>  <p>Paragraph with m  a  n  y       contiguous     spaces      !</p>        </body>
+</html>
+EOF
+
+
 # verifies that X-Mod-Pagespeed is properly installed
-if curl -# http://localhost/phpinfo.php 2>/dev/null |grep Pagespeed 2>&1 > /dev/null 
+if curl -# http://localhost/phpinfo.php 2>/dev/null |grep Pagespeed 
 then
     echo "X-Mod-Pagespeed installed and activated"
-    curl -# http://localhost/phpinfo.php 2>/dev/null |grep Pagespeed
 else
     echo "X-Mod-Pagespeed not installed or not activated"
 fi
 ##########
 # verifies that X-Mod-Pagespeed is properly working
-if curl -# localhost 2> /dev/null |grep "  " 2>&1  > /dev/null 
+if curl -# http://localhost/multispace_test.html 2> /dev/null |grep "  "
 then
     echo "X-Mod-Pagespeed is NOT working, double white spaces have been found"
-    curl -# localhost 2> /dev/null
 else
+    curl -# http://localhost/multispace_test.html 2> /dev/null
     echo "X-Mod-Pagespeed is removing space properly"
-    curl -# localhost 2> /dev/null
 fi
 
 

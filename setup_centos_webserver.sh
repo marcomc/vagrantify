@@ -1,6 +1,6 @@
 #!/bin/bash
 
-./setup_ca_and_certificate.sh $HOSTNAME.local
+bash /vagrant/vagrantme/setup_ca_and_certificate.sh $HOSTNAME.local
 ##########
 # install the Apache server
 yum -y -q install http php varnish
@@ -64,10 +64,10 @@ fi
 if curl -# localhost 2> /dev/null |grep "  " 2>&1  > /dev/null 
 then
     echo "X-Mod-Pagespeed is NOT working, double white spaces have been found"
-    curl -#curl localhost 2> /dev/null
+    curl -# localhost 2> /dev/null
 else
     echo "X-Mod-Pagespeed is removing space properly"
-    curl -#curl localhost 2> /dev/null
+    curl -# localhost 2> /dev/null
 fi
 
 

@@ -7,8 +7,8 @@
 from the command-line of the host machine run:
 ```bash
 vagrant package --base vagrant-ubuntu64-server-1310 -o ubuntu64-server.box
-vagrant box add ubuntu64-server ~VirtualBox\ VMs/ubuntu64-server.box
+vagrant box add ubuntu64-server ubuntu64-server.box
 
 vagrant package --base vagrant-centos64-65 -o centos64.box
-vagrant box add centos64 ~/VirtualBox\ VMs/centos64.box
+vagrant box add centos64 centos64.box
 ```

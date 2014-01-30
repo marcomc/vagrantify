@@ -33,10 +33,9 @@ echo "Enabling mod_pagespeed"
 sed -i 's/.*ModPagespeedEnableFilters collapse_whitespace.*/    ModPagespeedEnableFilters collapse_whitespace,elide_attributes/' /etc/httpd/conf.d/pagespeed.conf
 
 # start Apache now
-/etc/init.d/httpd start
-sleep 2
-/etc/init.d/varnish start
-/etc/init.d/varnishlog start
+/etc/init.d/httpd restart
+/etc/init.d/varnish restart
+/etc/init.d/varnishlog restart
 # Varnish is listening on the local port 6081
 # Vagrant is configured to forward that port to port localhost:8081
 # it's possible to test the Varnish cash using curl and monitoring the /etc/log/varnish/varnish.log file

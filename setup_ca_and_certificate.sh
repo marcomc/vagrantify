@@ -2,9 +2,9 @@
 ##### Create a Certificate Authority and a Certificate for Apache #####
 #  create a directory for the keys of the CA
 
-CA_ROOT=/etc/pki/CA #$1
+CA_ROOT=$1 #/etc/pki/CA
 CA_NAME=cakey.pem
-DOMAIN_NAME=$1
+DOMAIN_NAME=$2
     
 CRT_INDEX=$CA_ROOT/index.txt
 CRT_SERIAL=$CA_ROOT/serial
@@ -35,26 +35,28 @@ if [ ! -d $CA_ROOT ];then mkdir -p $CA_ROOT;chmod 700 $CA_ROOT;fi
 
 if [ ! -f $CA_CRT ];
 then
+    echo "Generating a CA certificateio"
     # Generate a private key and a certificate request, and a self-signed certificate for the CA.
     openssl genrsa -out $CA_KEY 1024 2> /dev/null
     chmod 400 $CA_KEY
     openssl req -new -nodes -key $CA_KEY -out $CA_CSR  -subj "/C=$CA_C/ST=$CA_ST/L=$CA_L/O=$CA_O/CN=$CA_CN"
     openssl x509 -req -days 3650 -in $CA_CSR -signkey $CA_KEY -out $CA_CRT 2> /dev/null
     rm $CA_CSR
-    echo "Generated CA certificate"
+    echo "CA certificate generated"
 else
     echo "Skipping the generation of the CA certificate which is already existing"
 fi
 
 if [ ! -f $DOMAIN_CRT ];
 then
+    echo "Generating a Selfsigne certificate for $DOMAIN_NAME"    
     # Generate a private key and a certificate request, and a self-signed certificate for the CA.
     openssl genrsa -out $DOMAIN_KEY 1024 2> /dev/null
     chmod 400 $DOMAIN_KEY
     openssl req -new -key $DOMAIN_KEY -out $DOMAIN_CSR  -subj "/C=$DOMAIN_C/ST=$DOMAIN_ST/L=$DOMAIN_L/O=$DOMAIN_O/CN=$DOMAIN_CN"
     openssl ca -batch -policy policy_anything -out $DOMAIN_CRT -infiles $DOMAIN_CSR 2> /dev/null
     rm $DOMAIN_CSR
-    echo "Generated Domain certificate for $DOMAIN_NAME"    
+    echo "Selfsigne certificate generated"    
 else
     echo "Skipping the generation of the Domain $DOMAIN_NAME certificate which is already existing"
 fi

@@ -18,12 +18,16 @@ Create a folder to contain your vagrant VMs such as ~/vms/
 Create a folder to contain your ubuntu64-server vagrant vm such as ~/vms/ubuntu64-server
 Initialise the vagrant vm:
 ```bqsh
+mkdir ~/vms/ubuntu64-server
+cd ~/vms/ubuntu64-server
 vagrant init ubuntu64-server
 ```
 ##cantos64
 Create a folder to contain your ubuntu64-server vagrant vm such as ~/vms/centos64
 Initialise the vagrant vm:
 ```bqsh
+mkdir ~/vms/centos64
+cd ~/vms/centos64
 vagrant init centos64
 ```
 Clone the 'vagrantme' scripts in the 'vagrant' folder that will be shared with between the host and the server

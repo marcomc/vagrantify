@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Creation of a CA and of a self-signed certificate to be used by mod_ssl
-$DOMAIN_NAME=localhost
+# Creation of a CA and of a self-signed certificate for localhost to be used by mod_ssl
+DOMAIN_NAME=localhost
 CA_ROOT="/etc/pki/CA"
 TLS_ROOT="/etc/pki/tls"
 /vagrant/vagrantme/setup_ca_and_certificate.sh $CA_ROOT $DOMAIN_NAME
 echo "Copying Certificate and Private Key to the TLS folder for later use by mod_ssl"
 cp $CA_ROOT/private/$DOMAIN_NAME.key  $TLS_ROOT/private/$DOMAIN_NAME.key
-cp $CA_ROOT/certs/$DOMAIN_NAME.key  $TLS_ROOT/certs/$DOMAIN_NAME.key
+cp $CA_ROOT/certs/$DOMAIN_NAME.crt  $TLS_ROOT/certs/$DOMAIN_NAME.crt
 
 # install the Apache server
 echo "Installing Apache, PHP, mod_ssl, Varnish"

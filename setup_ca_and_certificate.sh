@@ -35,7 +35,7 @@ if [ ! -d $CA_ROOT ];then mkdir -p $CA_ROOT;chmod 700 $CA_ROOT;fi
 
 if [ ! -f $CA_CRT ];
 then
-    echo "Generating a CA certificateio"
+    echo "Generating a CA certificate"
     # Generate a private key and a certificate request, and a self-signed certificate for the CA.
     openssl genrsa -out $CA_KEY 1024 2> /dev/null
     chmod 400 $CA_KEY

@@ -1,29 +1,35 @@
 #VM Preparation
-1. Install Centos 6.5 or Ubuntu 10.13-server
-2. Copy the 'vagrantme' script collection into the VM
-3. Run common_vm_settings <vmname> (i.e. centos64-65 or ubuntu64-1013-server)
-4. shutdown the VM
+1. Install Centos 6.5 or Ubuntu 10.13-server as two new VirtualBox.
+2. Copy the 'vagrantme' script collection into the VM.
+3. log in to each virtual machine.
+3. From the command-line withing the virtual machine run:
+    ```
+    /vagrant/vagrantme/common_vm_settings.sh <vm_hostname>
+    # <vm_hostname> could be centos64-65 or ubuntu64-1013
+    ```
+4. Shutdown the virtual machine.
 
 from the command-line of the host machine run:
 ```bash
-vagrant package --base vagrant-ubuntu64-server-1310 -o ubuntu64-server.box
-vagrant box add ubuntu64-server ubuntu64-server.box
+vagrant package --base vagrant-ubuntu64-1310 -o ubuntu64.box
+vagrant box add ubuntu64 ubuntu64.box
 
 vagrant package --base vagrant-centos64-65 -o centos64.box
 vagrant box add centos64 centos64.box
 ```
-#Setup of the vagrant vms
+#Setup of the vagrant virtual machine
 Create a folder to contain your vagrant VMs such as ~/vms/
-##ubuntu64-server
-Create a folder to contain your ubuntu64-server vagrant vm such as ~/vms/ubuntu64-server
-Initialise the vagrant vm:
+
+##ubuntu64
+Create a folder to contain your ubuntu64 vagrant virtual machine such as ~/vms/ubuntu64
+Initialise the vagrant virtual machine:
 ```bqsh
-mkdir ~/vms/ubuntu64-server
-cd ~/vms/ubuntu64-server
-vagrant init ubuntu64-server
+mkdir ~/vms/ubuntu64
+cd ~/vms/ubuntu64
+vagrant init ubuntu64
 ```
 ##cantos64
-Create a folder to contain your ubuntu64-server vagrant vm such as ~/vms/centos64
+Create a folder to contain your ubuntu64 vagrant virtual machine such as ~/vms/centos64
 Initialise the vagrant vm:
 ```bqsh
 mkdir ~/vms/centos64

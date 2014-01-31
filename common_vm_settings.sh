@@ -90,10 +90,9 @@ chown $MAIN_ACCOUNT:$MAIN_ACCOUNT /home/$MAIN_ACCOUNT/.ssh/vagrant.pub
 cat /home/$MAIN_ACCOUNT/.ssh/vagrant.pub >> /home/$MAIN_ACCOUNT/.ssh/authorized_keys
 # install the insecure vagrant private key pair
 
-# delete the user 'user' wich we probably did set up when we created the vm
-# on ubunto this command will fail if we are running the script as sudo from the user 'user' itself
-# deleting the 'user
-if [ -d "/home/user" ]; then
-    echo "deleting the user called 'user' as it's no more necessary"
-    userdel -f -r user
-fi
+echo "At the stage the 'root' user will be assigned the password 'vagrant'."
+echo "Log out from the user 'user' and log in as root and delete the user 'user':"
+echo ""
+echo "~# userdel -f -r user"
+echo ""
+echo "Now shutdown the virtual machine."

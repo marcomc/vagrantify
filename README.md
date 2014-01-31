@@ -10,14 +10,6 @@ For the scope of this tutorial call the virtual machines as follow:
 
 Log in to each virtual machine.
 
-Install the VirtualBox Guest Additions:
-    1. Click on "VirtualBOX VM (menu) -> Devices -> Insert Guest Additions CD image"
-    2. In the Guest command-line type
-```bash
-sudo mount /dev/cdrom/ /media/cdrom
-sudo /media/cdrom/VBoxLinuxAdditions.run
-```
-
 Copy the 'vagrantme' script collection into the VM.
 ```bash
 cd /home/user/
@@ -37,6 +29,17 @@ At the stage the 'root' user will be assigned the password 'vagrant'
 ```bash
 userdel -f -r user
 ``` 
+
+##Now restart the virtual machine
+This will start the system with the most updated kernel for which we will build/install the VirtualBox Guests Additions.
+
+Install the VirtualBox Guest Additions:
+    1. Click on "VirtualBOX VM (menu) -> Devices -> Insert Guest Additions CD image"
+    2. In the Guest command-line type
+```bash
+sudo mount /dev/cdrom/ /media/cdrom
+sudo /media/cdrom/VBoxLinuxAdditions.run
+```
 
 ##Now shutdown the virtual machine.
 From the command-line of the host machine run:

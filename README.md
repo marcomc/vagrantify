@@ -42,13 +42,13 @@ mkdir ~/vms/centos64
 cd ~/vms/centos64
 vagrant init centos64
 ```
-Clone the 'vagrantme' scripts in the 'vagrant' folder that will be shared with between the host and the server
+Clone the 'vagrantme' scripts in the 'vagrant' folder that will be shared with between the host and the server:
 ```bash
 cd ~/vms/centos64/vagrant
 git clone https://github.com/marcomc/vagrantme.git
 ```
 #Vagrantfile for Centos vm
-After initialising the folder tor the vagrant vm, add the following lines to the 'Vagrantfile' configuration
+After initialising the folder tor the vagrant vm, add the following lines to the 'Vagrantfile' configuration:
 ```
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,

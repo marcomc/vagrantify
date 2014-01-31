@@ -10,11 +10,16 @@ For the scope of this tutorial call the virtual machines as follow:
 
 Log in to each virtual machine.
 
+Activate the Network
+```bash
+ifup eth0
+```
+
 Copy the 'vagrantme' script collection into the VM.
 ```bash
+# may require the installation of the 'unzip' and 'wget' tools
 cd /home/user/
 wget https://github.com/marcomc/vagrantme/archive/master.zip
-# may require the installation of the 'unzip' tool
 unzip master.zip
 ```
 

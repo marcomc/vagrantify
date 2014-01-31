@@ -77,8 +77,7 @@ vagrant init centos64
 ```
 Clone the 'vagrantme' scripts in the 'vagrant' folder that will be shared with between the host and the server:
 ```bash
-mkdir ~/vms/centos64/vagrant
-cd ~/vms/centos64/vagrant
+cd ~/vms/centos64
 git clone https://github.com/marcomc/vagrantme.git
 ```
 #Vagrantfile for Centos virtual machine

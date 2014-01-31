@@ -6,12 +6,12 @@ echo $VAGRANT_HOSTNAME > /etc/hostname
 #
 # updates the system
 echo "Updating the system"
-apt-get -q update && sudo apt-get -q dist-upgrade
+apt-get -qy update && sudo apt-get -qy dist-upgrade
 
 # install desired packages
 echo "Installing OpenSSH, Screen, Make, Git, GCC"
-apt-get -q install openssh-server openssh-client vim screen make git-core gcc
+apt-get -qy install openssh-server openssh-client vim screen make git-core gcc
 
 echo "Cleaning the installation cache"
 # spring cleaning
-apt-get -q clean
+apt-get -qy clean

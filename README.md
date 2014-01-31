@@ -53,7 +53,7 @@ mkdir ~/vms/ubuntu64
 cd ~/vms/ubuntu64
 vagrant init ubuntu64
 ```
-##cantos64
+##centos64
 Create a folder to contain your ubuntu64 vagrant virtual machine such as ~/vms/centos64
 Initialise the vagrant vm:
 ```bqsh
@@ -66,8 +66,8 @@ Clone the 'vagrantme' scripts in the 'vagrant' folder that will be shared with b
 cd ~/vms/centos64/vagrant
 git clone https://github.com/marcomc/vagrantme.git
 ```
-#Vagrantfile for Centos vm
-After initialising the folder tor the vagrant vm, add the following lines to the 'Vagrantfile' configuration:
+#Vagrantfile for Centos virtual machine
+After initialising the folder tor the vagrant virtual machine, add the following lines to the 'Vagrantfile' configuration:
 ```
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,

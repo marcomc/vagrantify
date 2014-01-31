@@ -3,6 +3,8 @@
 Install Centos 6.5 or Ubuntu 10.13-server as two new VirtualBox.
 > advised to set up an initial admin user called 'user'
 
+Log in to each virtual machine.
+
 Install the VirtualBox Guest Additions:
     1. Click on "VirtualBOX VM (menu) -> Devices -> Insert Guest Additions CD image"
     2. In the Guest command-line type
@@ -18,7 +20,6 @@ wget https://github.com/marcomc/vagrantme/archive/master.zip
 # may require the installation of the 'unzip' tool
 unzip master.zip
 ```
-Log in to each virtual machine.
 
 From the command-line withing the virtual machine run:
 ```bash

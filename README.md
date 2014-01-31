@@ -12,11 +12,14 @@ sudo /media/cdrom/VBoxLinuxAdditions.run
 ```
 
 Copy the 'vagrantme' script collection into the VM.
-
+```bash
+cd /home/user/
+git clone https://github.com/marcomc/vagrantme.git
+```
 Log in to each virtual machine.
 
 From the command-line withing the virtual machine run:
-```
+```bash
 /vagrant/vagrantme/common_vm_settings.sh <vm_hostname>
 # <vm_hostname> could be centos64-65 or ubuntu64-1013
 ```

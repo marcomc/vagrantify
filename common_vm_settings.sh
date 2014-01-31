@@ -79,7 +79,7 @@ sed -i "/$ADMIN_GROUP/d" /etc/sudoers
 echo "%$ADMIN_GROUP   ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 # create the vagrant user
-echo "Creating the vagrant user"
+echo "Setup for the user $MAIN_ACCOUNT"
 bash ./create_new_user.sh $MAIN_ACCOUNT $MAIN_ACCOUNT_PWD $ADMIN_GROUP
 echo "Installing the insecure Public and Private RSA SSH Keys for the vagrant user"
 curl -o /home/$MAIN_ACCOUNT/.ssh/vagrant https://raw.github.com/mitchellh/vagrant/master/keys/vagrant

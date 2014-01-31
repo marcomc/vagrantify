@@ -5,7 +5,7 @@ NEW_USER_PASSWORD="$2"  # substitute with $2
 SUDO_GROUP="$3"
 
 # creation of a $NEW_USER_NAME user on each server
-echo "Creating the user $NEW_USER_NAME"
+echo "Creating a new user named $NEW_USER_NAME"
 useradd $NEW_USER_NAME --password "" -m -d $NEW_USER_HOME -s /bin/bash
 
 echo "Setting the password for the user $NEW_USER_NAME to $NEW_USER_PASSWORD"

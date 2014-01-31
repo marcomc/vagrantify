@@ -5,13 +5,19 @@ NEW_USER_PASSWORD="$2"  # substitute with $2
 SUDO_GROUP="$3"
 
 # creation of a $NEW_USER_NAME user on each server
+echo "Creating the user $NEW_USER_NAME"
 useradd $NEW_USER_NAME --password "" -m -d $NEW_USER_HOME -s /bin/bash
+
+echo "Setting the password for the user $NEW_USER_NAME to $NEW_USER_PASSWORD"
 echo $NEW_USER_NAME:$NEW_USER_PASSWORD | chpasswd
+
 mkdir $NEW_USER_HOME/.ssh
 touch $NEW_USER_HOME/.ssh/authorized_keys
 chown -R $NEW_USER_NAME:$NEW_USER_NAME $NEW_USER_HOME/.ssh
 chmod -R go-rwx $NEW_USER_HOME/.ssh
+echo "Creating an empty .ssh/authorized_keys file" 
 
+echo "Adding the user $NEW_USER_NAME to the 'sudo' enabled group $SUDO_GROUP"
 # add user the the sudo group
 gpasswd -a $NEW_USER_NAME $SUDO_GROUP
 

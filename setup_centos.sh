@@ -30,7 +30,7 @@ yum -y -q upgrade
 e
 cho "Installing Make, GCC, Screem, OpenSSH,Autoconf,Kenrel-Devel"
 # install desired packages
-yum -y -q install vim make gcc screen man openssh-server openssh-client autoconf.noarch kernel-devel-$(uname -r) 
+yum -y -q install vim make gcc screen man openssh-server openssh-clients autoconf.noarch kernel-devel-$(uname -r) 
 
 echo "Cleaning the installation cache"
 # spring cleaning

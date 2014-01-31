@@ -1,7 +1,12 @@
 #Virtual Machines Preparation
 ##Run VirtualBox
 Install Centos 6.5 or Ubuntu 10.13-server as two new VirtualBox.
-> advised to set up an initial admin user called 'user'
+For the scope of this tutorial call the virtual machines as follow:
+* Ubuntu VM name: vagrant-ubuntu64-1310
+* Centos VM name: vagrant-centos64-65
+
+**Set up an initial user called 'user' with any password of your choice**
+> The password for root must be 'vagrant'
 
 Log in to each virtual machine.
 

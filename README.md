@@ -45,6 +45,7 @@ Install the VirtualBox Guest Additions:
 sudo mount /dev/cdrom/ /media/cdrom
 sudo /media/cdrom/VBoxLinuxAdditions.run
 ```
+>If the command fails you may need to run the command 'yum install -q -y kernel-devel-$(uname -r)'
 
 ##Now shutdown the virtual machine.
 From the command-line of the host machine run:

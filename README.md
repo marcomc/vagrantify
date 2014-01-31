@@ -14,7 +14,9 @@ sudo /media/cdrom/VBoxLinuxAdditions.run
 Copy the 'vagrantme' script collection into the VM.
 ```bash
 cd /home/user/
-git clone https://github.com/marcomc/vagrantme.git
+wget https://github.com/marcomc/vagrantme/archive/master.zip
+# may require the installation of the 'unzip' tool
+unzip master.zip
 ```
 Log in to each virtual machine.
 

@@ -9,10 +9,10 @@
     # <vm_hostname> could be centos64-65 or ubuntu64-1013
     ```
 5. At the stage the 'root' user will be assigned the password 'vagrant'
-> log out from the user 'user' and log in as root and delete the user 'user'
-```bash
+    > log out from the user 'user' and log in as root and delete the user 'user'
+    ```bash
     userdel -f -r user
-``` 
+    ``` 
 6. Now shutdown the virtual machine.
 
 from the command-line of the host machine run:

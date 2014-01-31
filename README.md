@@ -23,7 +23,7 @@ unzip master.zip
 
 From the 'vagrantme' directory withing the virtual machine run:
 ```bash
-common_vm_settings.sh <vm_hostname>
+sudo common_vm_settings.sh <vm_hostname>
 # <vm_hostname> could be centos64-65 or ubuntu64-1013
 ```
 

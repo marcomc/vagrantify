@@ -1,4 +1,5 @@
-#VM Preparation
+#Virtual Machines Preparation
+##Run VirtualBox
 1. Install Centos 6.5 or Ubuntu 10.13-server as two new VirtualBox.
 > advised to set up an initial admin user called 'user' to be 
 2. Copy the 'vagrantme' script collection into the VM.
@@ -9,13 +10,12 @@
     # <vm_hostname> could be centos64-65 or ubuntu64-1013
     ```
 5. At the stage the 'root' user will be assigned the password 'vagrant'
-    > log out from the user 'user' and log in as root and delete the user 'user':
-```bash
-    userdel -f -r user
-``` 
-6. Now shutdown the virtual machine.
-
-from the command-line of the host machine run:
+> log out from the user 'user' and log in as root and delete the user 'user':
+    ```bash
+        userdel -f -r user
+    ``` 
+##Now shutdown the virtual machine.
+From the command-line of the host machine run:
 ```bash
 vagrant package --base vagrant-ubuntu64-1310 -o ubuntu64.box
 vagrant box add ubuntu64 ubuntu64.box

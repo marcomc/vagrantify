@@ -67,6 +67,20 @@ mkdir ~/vms/ubuntu64
 cd ~/vms/ubuntu64
 vagrant init ubuntu64
 ```
+Clone the 'vagrantme' scripts in the 'vagrant' folder that will be shared with between the host and the server:
+```bash
+cd ~/vms/centos64
+git clone https://github.com/marcomc/vagrantme.git
+```
+###Vagrantfile for Ubuntu virtual machine
+After initialising the folder tor the vagrant virtual machine, add the following lines to the 'Vagrantfile' configuration:
+```
+  # add the user 'barney' with password 'password' member of 'admin'
+  config.vm.provision "shell" do |s|
+    s.inline = "/vagrant/vagrantme/create_new_user.sh $1 $2 $3"
+    s.args   = ["barney","password","admin"]
+  end
+```
 ##centos64
 Create a folder to contain your ubuntu64 vagrant virtual machine such as ~/vms/centos64
 Initialise the vagrant vm:
@@ -80,7 +94,7 @@ Clone the 'vagrantme' scripts in the 'vagrant' folder that will be shared with b
 cd ~/vms/centos64
 git clone https://github.com/marcomc/vagrantme.git
 ```
-#Vagrantfile for Centos virtual machine
+###Vagrantfile for Centos virtual machine
 After initialising the folder tor the vagrant virtual machine, add the following lines to the 'Vagrantfile' configuration:
 ```
   # Create a forwarded port mapping which allows access to a specific port
@@ -94,9 +108,15 @@ After initialising the folder tor the vagrant virtual machine, add the following
   # Enable provisioning with Script stand alone.  Bash  manifests
   
   config.vm.provision "shell", path: "vagrantme/setup_centos_webserver.sh"
+
+  # add the user 'barney' with password 'password' member of 'admin'
+  config.vm.provision "shell" do |s|
+    s.inline = "/vagrant/vagrantme/create_new_user.sh $1 $2 $3"
+    s.args   = ["barney","password","admin"]
+  end
 ```
 
-#Testing
+###Testing the Centos webserver
 The provisioning script for the centos64 runs some test with readable output to make sure that the requirements are met.
 
 After the vm is up and running you can verify that all works as expected visiting the following url on a browser on you host machine:

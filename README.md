@@ -1,19 +1,32 @@
 #Virtual Machines Preparation
 ##Run VirtualBox
-1. Install Centos 6.5 or Ubuntu 10.13-server as two new VirtualBox.
-> advised to set up an initial admin user called 'user' to be 
-2. Copy the 'vagrantme' script collection into the VM.
-3. log in to each virtual machine.
-4. From the command-line withing the virtual machine run:
-    ```
-    /vagrant/vagrantme/common_vm_settings.sh <vm_hostname>
-    # <vm_hostname> could be centos64-65 or ubuntu64-1013
-    ```
-5. At the stage the 'root' user will be assigned the password 'vagrant'
+Install Centos 6.5 or Ubuntu 10.13-server as two new VirtualBox.
+> advised to set up an initial admin user called 'user'
+
+Install the VirtualBox Guest Additions:
+    1. Click on "VirtualBOX VM (menu) -> Devices -> Insert Guest Additions CD image"
+    2. In the Guest command-line type
+```bash
+sudo mount /dev/cdrom/ /media/cdrom
+sudo /media/cdrom/VBoxLinuxAdditions.run
+```
+
+Copy the 'vagrantme' script collection into the VM.
+
+Log in to each virtual machine.
+
+From the command-line withing the virtual machine run:
+```
+/vagrant/vagrantme/common_vm_settings.sh <vm_hostname>
+# <vm_hostname> could be centos64-65 or ubuntu64-1013
+```
+
+At the stage the 'root' user will be assigned the password 'vagrant'
 > log out from the user 'user' and log in as root and delete the user 'user':
-    ```bash
-        userdel -f -r user
-    ``` 
+```bash
+userdel -f -r user
+``` 
+
 ##Now shutdown the virtual machine.
 From the command-line of the host machine run:
 ```bash

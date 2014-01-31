@@ -95,3 +95,12 @@ After initialising the folder tor the vagrant virtual machine, add the following
   
   config.vm.provision "shell", path: "vagrantme/setup_centos_webserver.sh"
 ```
+
+#Testing
+The provisioning script for the centos64 runs some test with readable output to make sure that the requirements are met.
+
+After the vm is up and running you can verify that all works as expected visiting the following url on a browser on you host machine:
+* http://localhost:8080/multispace_test.html (or phpinfo.php)
+* http://localhost:8081/multispace_test.html (or phpinfo.php)
+* http://localhost:8443/multispace_test.html (or phpinfo.php)
+

@@ -21,9 +21,9 @@ wget https://github.com/marcomc/vagrantme/archive/master.zip
 unzip master.zip
 ```
 
-From the command-line withing the virtual machine run:
+From the 'vagrantme' directory withing the virtual machine run:
 ```bash
-/vagrant/vagrantme/common_vm_settings.sh <vm_hostname>
+common_vm_settings.sh <vm_hostname>
 # <vm_hostname> could be centos64-65 or ubuntu64-1013
 ```
 

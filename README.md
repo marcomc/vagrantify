@@ -3,17 +3,17 @@
 > advised to set up an initial admin user called 'user' to be 
 2. Copy the 'vagrantme' script collection into the VM.
 3. log in to each virtual machine.
-3. From the command-line withing the virtual machine run:
+4. From the command-line withing the virtual machine run:
     ```
     /vagrant/vagrantme/common_vm_settings.sh <vm_hostname>
     # <vm_hostname> could be centos64-65 or ubuntu64-1013
     ```
-4. At the stage the 'root' user will be assigned the password 'vagrant'
+5. At the stage the 'root' user will be assigned the password 'vagrant'
 > log out from the user 'user' and log in as root and delete the user 'user'
 ```bash
     userdel -f -r user
 ``` 
-5. Now shutdown the virtual machine.
+6. Now shutdown the virtual machine.
 
 from the command-line of the host machine run:
 ```bash

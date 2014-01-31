@@ -23,8 +23,8 @@ unzip master.zip
 
 From the 'vagrantme' directory withing the virtual machine run:
 ```bash
-sudo common_vm_settings.sh <vm_hostname>
-# <vm_hostname> could be centos64-65 or ubuntu64-1013
+sudo common_vm_settings.sh <choose_a_vm_hostname>
+# <choose_a_vm_hostname> could be centos64-65 or ubuntu64-1013
 ```
 
 At the stage the 'root' user will be assigned the password 'vagrant'

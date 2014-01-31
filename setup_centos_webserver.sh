@@ -5,8 +5,6 @@ DOMAIN_NAME=localhost
 CA_ROOT="/etc/pki/CA"
 TLS_ROOT="/etc/pki/tls"
 IPTABLE_SAVE_FILE="/etc/sysconfig/iptables"
-PHP_INFO=$DOCUMENT_ROOT/phpinfo.php
-MULTISPACE_TEST=$DOCUMENT_ROOT/multispace_test.html
 
 /vagrant/vagrantme/setup_ca_and_certificate.sh $CA_ROOT $DOMAIN_NAME
 echo "Copying Certificate and Private Key to the TLS folder for later use by mod_ssl"
@@ -63,6 +61,7 @@ sed -i "s/#ServerName.*/ServerName $DOMAIN_NAME:443/" /etc/httpd/conf.d/ssl.conf
 echo "Testing mod_pagespeed"
 # set up the PHP test page from which we will check that Apache is actualy loading the modules we require 
 DOCUMENT_ROOT=`grep DocumentRoot /etc/httpd/conf/httpd.conf | sed "/^#/d" | cut -d'"' -f2`
+PHP_INFO=$DOCUMENT_ROOT/phpinfo.php
 touch $PHP_INFO
 cat <<'EOF' > $PHP_INFO
 <?php phpinfo (); ?>
@@ -79,6 +78,7 @@ fi
 
 # verifies that X-Mod-Pagespeed is properly working
 
+MULTISPACE_TEST=$DOCUMENT_ROOT/multispace_test.html
 touch $MULTISPACE_TEST
 cat <<'EOF' > $MULTISPACE_TEST
 <html>

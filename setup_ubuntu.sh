@@ -10,7 +10,7 @@ apt-get -q update && sudo apt-get -q dist-upgrade
 
 # install desired packages
 echo "Installing OpenSSH, Screen, Make, Git, GCC"
-apt-get -q install openssh-server ssh vim screen make git-core gcc
+apt-get -q install openssh-server openssh-client vim screen make git-core gcc
 
 echo "Cleaning the installation cache"
 # spring cleaning

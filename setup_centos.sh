@@ -27,8 +27,7 @@ rpm --quiet -ivh epel-release-6*.rpm
 echo "Updating the system"
 # make sure that the system is updated at the latests release
 yum -y -q upgrade
-e
-cho "Installing Make, GCC, Screem, OpenSSH,Autoconf,Kenrel-Devel"
+echo "Installing Make, GCC, Screem, OpenSSH,Autoconf,Kenrel-Devel"
 # install desired packages
 yum -y -q install vim make gcc screen man openssh-server openssh-clients autoconf.noarch kernel-devel-$(uname -r) 
 
